@@ -1,22 +1,15 @@
-"use clinet";
+"use client";
 
-import { getPostsBySearch } from "@/services/getPosts";
+import { usePosts } from "@/store";
 import { FormEventHandler, useState } from "react";
 
-interface Iprops {
-	onSearch: (value: any[]) => void
-}
-
-const PostSearch = ({ onSearch }: Iprops) => {
-
+const PostSearch = () => {
 	const [search, setSearch] = useState('')
+	const getPostsBySearch = usePosts(state => state.getPostsBySearch)
 
 	const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
 		event.preventDefault();
-
-		const posts = await getPostsBySearch(search);
-		onSearch(posts)
-		console.log(posts + ' search')
+		await getPostsBySearch(search);
 	}
 	return (
 		<form onSubmit={handleSubmit}>
