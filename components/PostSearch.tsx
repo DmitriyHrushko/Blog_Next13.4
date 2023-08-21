@@ -16,6 +16,7 @@ const PostSearch = ({ onSearch }: Iprops) => {
 
 		const posts = await getPostsBySearch(search);
 		onSearch(posts)
+		console.log(posts + ' search')
 	}
 	return (
 		<form onSubmit={handleSubmit}>

@@ -1,4 +1,5 @@
 'use client';
+import { PostCreate } from "@/components/NewPost";
 import { PostSearch } from "@/components/PostSearch";
 import { Posts } from "@/components/Posts";
 import { getAllPosts } from "@/services/getPosts";
@@ -21,12 +22,15 @@ export default function Blog() {
 	return (
 		<>
 			<h1>Blog</h1>
+			<PostCreate />
 			<PostSearch onSearch={setPosts} />
 			{loading ? (
 				<h3> Loading... </h3>
 			) : (
 				<Posts posts={posts} />
+
 			)}
+
 		</>
 	)
 }
